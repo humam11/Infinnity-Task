@@ -92,11 +92,6 @@ body {
     background-color: red;
 }
 
-
-.clear-button, .undo-button, .redo-button {
-    background-color: #333;
-}
-
 .color-select {
   background-color: #333;
   border: none;
