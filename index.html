@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Task</title>
+</head>
+<body>
+
+  <div id="canvas-container">
+    <canvas id="canvas"></canvas>
+  </div>
+  
+  <div class="buttons-container">
+
+    <button class="figure-button active" id="circle"></button>
+    <button class="figure-button" id="square"></button>
+    <button class="figure-button" id="triangle"></button> 
+
+    <!-- Создание кнопки путем добавления нового элемента <button>
+      -с добавлением атрибута «class», содержащего "figure-button" 
+      -и также с добавлением атрибута «id», содержащего "(название-фигуры)"
+      возможные  фигуры, которые можно добавить: pentagon, star, heart, diamond, arrow.
+    -->
+      
+    <select class="color-select" id="color">
+      <option value="red">Red</option>
+      <option value="green">Green</option>
+      <option value="blue">Blue</option>
+    </select>
+
+    <button class="clear-button" id="clear-button">Clear</button>
+    <button class="undo-button" id="undo-button">Undo</button>
+    <button class="redo-button" id="redo-button">Redo</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
