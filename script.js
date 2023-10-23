@@ -12,7 +12,6 @@ const redoButton = document.getElementById('redo-button');
 let currentFigure = 'circle';
 let currentColor = 'red';
 let figures = [];
-let redoStack = [];
 
     
 function generateFigureSymbol(id) {
@@ -151,29 +150,42 @@ colorSelect.addEventListener('change', () => {
     setActiveFigureButton(document.querySelector('.figure-button.active').id);
 });
     
+let backup = null;
+
 clearButton.addEventListener('click', () => {
+    backup = {
+        imageData: ctx.getImageData(0, 0, canvas.width, canvas.height),
+        figures: figures.slice(),
+        redoStack: redoStack.slice(),
+    };
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     figures = [];
     redoStack = [];
 });
-    
+
 undoButton.addEventListener('click', () => {
     if (figures.length > 0) {
-    redoStack.push(figures.pop());
-    redraw();
+        redoStack.push(figures.pop());
+        redraw();
+    } else if (backup) {
+        ctx.putImageData(backup.imageData, 0, 0);
+        figures = backup.figures.slice();
+        redoStack = backup.redoStack.slice();
+        backup = null;
     }
 });
-    
+
 redoButton.addEventListener('click', () => {
     if (redoStack.length > 0) {
         figures.push(redoStack.pop());
         redraw();
     }
 });
-    
+
 function redraw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     figures.forEach(figure => {
-    drawOrRedrawFigure(figure.x, figure.y, figure.figure, figure.color);
+        drawOrRedrawFigure(figure.x, figure.y, figure.figure, figure.color);
     });
 }

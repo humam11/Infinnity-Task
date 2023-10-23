@@ -18,7 +18,6 @@ body {
   background-color: #49604c;
   padding: 20px 30px;
   overflow-y: auto;
-  box-shadow: -1px 2px 2px 0px #555, inset 0 0 10px 0 #555;
   -webkit-border-radius: 10px;
   -khtml-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -29,6 +28,9 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  -webkit-box-shadow: 0px 6px 22px 8px rgba(0,0,0,0.08);
+  -moz-box-shadow: 0px 6px 22px 8px rgba(0,0,0,0.08);
+  box-shadow: 0px 6px 22px 8px rgba(0,0,0,0.08);
 }
 
 #canvas-container:after {
@@ -48,7 +50,7 @@ body {
   margin-top: 75px;
   margin-right: 60px;
   right: 20%;
-  box-shadow: inset 0 -4px 1px rgba(0, 0, 0, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.3)
+  box-shadow: inset 0 -4px 1px rgba(0, 0, 0, 0.3), -1px -1px 1px rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 #canvas {
@@ -62,12 +64,14 @@ body {
   margin-top: 20px;
 }
 
-.buttons-container button {
+.buttons-container button, select {
   margin: 5px;
+  vertical-align: middle;
 }
 
 
-.figure-button, .clear-button, .undo-button, .redo-button {
+
+.figure-button, .clear-button, .undo-button, .redo-button, .color-select {
   background-color: #333; 
   color: white;
   padding: 9px 29px;
@@ -77,13 +81,15 @@ body {
   font-size: 16px;
   height: 46px;
   font-weight: 600;
-  vertical-align: middle;
   cursor: pointer;
   border-radius: 5px;
-  border: none;
+  border: 1px solid white;
   transition: background-color 0.4s ease;
 }
 
+.color-select {
+  text-align: left;
+}
 
 .figure-button:hover, .clear-button:hover, .undo-button:hover, .redo-button:hover {
     background-color: #007bff;
@@ -91,22 +97,6 @@ body {
 
 .figure-button {
     background-color: red;
-}
-
-.color-select {
-  background-color: #333;
-  border: none;
-  color: white;
-  height: 46px;
-  padding: 10px;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 .figure-button.active {
